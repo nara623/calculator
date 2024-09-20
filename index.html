@@ -45,7 +45,7 @@
 <body>
     <div class="calculator">
         <h2>분양가 계산기</h2>
-        <input type="number" id="area" placeholder="분양면적을 m²단위로 입력하세요">
+        <input type="number" id="area" placeholder="공급면적을 m²단위로 입력하세요">
         <button onclick="calculatePrice()">계산하기</button>
         <div id="result"></div>
     </div>
@@ -56,7 +56,7 @@
             const result = document.getElementById('result');
 
             if (isNaN(H) || H <= 0) {
-                result.textContent = "올바른 분양면적을 입력해주세요.";
+                result.textContent = "올바른 공급면적을 입력해주세요.";
                 return;
             }
 
@@ -75,7 +75,7 @@
                     result.textContent = "계산 결과가 너무 큽니다. 더 작은 값을 입력해주세요.";
                 } else {
                     const priceInBillion = price / 100000000; // 억 원 단위로 변환
-                    result.textContent = `분양면적 ${H}m²에 대한 분양가는 약 ${priceInBillion.toFixed(2)}억 원 입니다.`;
+                    result.textContent = `공급면적 ${H}m²에 대한 분양가는 약 ${priceInBillion.toFixed(2)}억 원 입니다.`;
                 }
             } catch (error) {
                 result.textContent = "계산 중 오류가 발생했습니다. 더 작은 값을 입력해주세요.";
