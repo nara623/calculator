@@ -48,6 +48,7 @@
         <input type="number" id="area" placeholder="공급면적을 m²단위로 입력하세요">
         <button onclick="calculatePrice()">계산하기</button>
         <div id="result"></div>
+        <div id="details"></div>
     </div>
 
     <script>
@@ -55,7 +56,6 @@
             const H = parseFloat(document.getElementById('area').value);
             const result = document.getElementById('result');
             const details = document.getElementById('details');
-
 
             if (isNaN(H) || H <= 0) {
                 result.textContent = "올바른 공급면적을 입력해주세요.";
