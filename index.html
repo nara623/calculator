@@ -75,7 +75,7 @@
                     result.textContent = "계산 결과가 너무 큽니다. 더 작은 값을 입력해주세요.";
                 } else {
                     const priceInBillion = price / 100000000; // 억 원 단위로 변환
-                    result.textContent = `공급면적 ${H}m²에 대한 분양가는 약 ${priceInBillion.toFixed(2)}억 원 입니다.`;
+                    result.textContent = `공급면적 ${H}m²에 대한 예상 분양가는 약 ${priceInBillion.toFixed(2)}억 원 입니다.`;
                 }
             } catch (error) {
                 result.textContent = "계산 중 오류가 발생했습니다. 더 작은 값을 입력해주세요.";
