@@ -59,10 +59,11 @@
 
             if (isNaN(H) || H <= 0) {
                 result.textContent = "올바른 공급면적을 입력해주세요.";
+                details.textContent = "";
                 return;
             }
 
-            const A = 2200000000;
+            const A = 2200000000; // 토지비 22억
             const B = 400;
             const C = 3200000;
             
@@ -75,11 +76,14 @@
 
                 if (!isFinite(price) || isNaN(price)) {
                     result.textContent = "계산 결과가 너무 큽니다. 더 작은 값을 입력해주세요.";
+                    details.textContent = "";
                 } else {
                     const priceInBillion = price / 100000000; // 억 원 단위로 변환
                     const areaInPyeong = H / 3.3058; // m²를 평으로 변환
                     const constructionCostPerPyeong = (D / B) / 10000; // 평당 건축비 (만원 단위)
-                    result.textContent = `공급면적 ${H}m²에 대한 예상 분양가는 약 ${priceInBillion.toFixed(2)}억 원 입니다.`;
+                    
+                    result.textContent = `공급면적 ${H.toFixed(2)}m²(약 ${areaInPyeong.toFixed(2)}평)에 대한 분양가는 약 ${priceInBillion.toFixed(2)}억 원 입니다.`;
+                    
                     details.innerHTML = `
                         <h3>산출 근거:</h3>
                         <p>토지비: 22억 원</p>
@@ -89,6 +93,7 @@
                 }
             } catch (error) {
                 result.textContent = "계산 중 오류가 발생했습니다. 더 작은 값을 입력해주세요.";
+                details.textContent = "";
             }
         }
     </script>
