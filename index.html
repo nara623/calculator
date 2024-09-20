@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>분양가 계산기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background-color: white;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>분양가 계산기</h2>
+        <input type="number" id="area" placeholder="분양면적(H)을 m²단위로 입력하세요">
+        <button onclick="calculatePrice()">계산하기</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculatePrice() {
+            const H = parseFloat(document.getElementById('area').value);
+            const result = document.getElementById('result');
+
+            if (isNaN(H) || H <= 0) {
+                result.textContent = "올바른 분양면적을 입력해주세요.";
+                return;
+            }
+
+            const A = 2200000000;
+            const B = 400;
+            const C = 3200000;
+            
+            try {
+                const D = B * C;
+                const E = (A + D) * 0.13;
+                const F = A + D + E;
+                const G = F / B;
+                const price = G * H;
+
+                if (!isFinite(price) || isNaN(price)) {
+                    result.textContent = "계산 결과가 너무 큽니다. 더 작은 값을 입력해주세요.";
+                } else {
+                    result.textContent = `분양면적 ${H}m²에 대한 분양가는 약 ${price.toExponential(2)}원 입니다.`;
+                }
+            } catch (error) {
+                result.textContent = "계산 중 오류가 발생했습니다. 더 작은 값을 입력해주세요.";
+            }
+        }
+    </script>
+</body>
+</html>
